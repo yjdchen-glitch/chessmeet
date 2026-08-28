@@ -208,7 +208,7 @@ async function fetchSpots() {
         <p class="text-xs text-gray-600 mb-2">${spot.address || ''}, ${spot.city}</p>
         <div class="text-xs space-y-1">
           <p><strong>Type:</strong> <span class="capitalize">${spot.environment}</span></p>
-          <p><strong>Tables:</strong> ${spot.has_permanent_tables ? 'Chess Sets Available On-Site' : 'Bring Your Own Chess Set'} (${spot.total_tables} Tables/Boards)</p>
+          <p><strong>Tables:</strong> ~ ${spot.has_permanent_tables ? 'Chess Sets Available On-Site' : 'Bring Your Own Chess Set'} (${spot.total_tables} Tables/Boards)</p>
           <p><strong>Popular Times:</strong> ${spot.peak_playing_times || 'Anytime'}</p>
           ${spot.description ? `<p class="italic text-gray-500 mt-1 font-sans">"${spot.description}"</p>` : ''}
         </div>
