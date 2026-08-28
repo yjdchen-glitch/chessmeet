@@ -4,9 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ChessMeet | Find Free Places to Play Chess</title>
-  <script src="https://cdn.tailwindcss.com"></script
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Leaflet CSS & JS -->
+  <link 
+    rel="stylesheet" 
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
+    crossorigin="" 
+  />
+  <script 
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+    crossorigin="">
+  </script>
+  <!-- Supabase JS Client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body class="bg-gray-100 font-sans text-gray-900 flex flex-col h-screen">
@@ -146,8 +158,8 @@
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4a3l2Y3Joc2pjZHZkb3pzcG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4NjE4NjEsImV4cCI6MjEwMzQzNzg2MX0._PfuxJkCzNAFw4BtJe7RPAPX7jyWfXXqaFb28l-9vG0';
     
     // Assign to 'supabase' so all your fetch and insert functions can use `supabase.from(...)`
-    const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    // const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    // const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     
     // 2. Initialize Map (Default centered on Houston/Katy area)
     const map = L.map('map').setView([29.7604, -95.3698], 11);
@@ -162,7 +174,7 @@
     async function fetchSpots() {
       const env = document.getElementById('envFilter').value;
       
-      let query = supabase.from('chess_spots').select('*').eq('status', 'approved');
+      let query = supabaseClient.from('chess_spots').select('*').eq('status', 'approved');
       if (env !== 'all') {
         query = query.eq('environment', env);
       }
@@ -244,7 +256,7 @@
         status: 'pending'
       };
 
-      const { error } = await supabase.from('chess_spots').insert([newSpot]);
+      const { error } = await supabaseClient.from('chess_spots').insert([newSpot]);
 
       if (error) {
         alert("Error submitting spot. Please try again.");
