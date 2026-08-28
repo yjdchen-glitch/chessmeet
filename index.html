@@ -38,7 +38,7 @@
 
   <div class="bg-white p-3 shadow-sm flex flex-wrap gap-2 items-center justify-between z-10">
     <div class="flex flex-1 gap-2 min-w-[250px]">
-      <input type="text" id="searchInput" placeholder="Search Houston, Katy, ZIP..." class="w-full border rounded-lg px-3 py-1.5 text-sm focus:outline-indigo-500">
+      <input type="text" id="searchInput" placeholder="Search New York..." class="w-full border rounded-lg px-3 py-1.5 text-sm focus:outline-indigo-500">
       <button onclick="searchSpots()" class="bg-indigo-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium">Search</button>
     </div>
     
@@ -55,21 +55,20 @@
     </div>
   </div>
 
-  <main class="flex-1 w-full relative">
-    <div id="map" class="h-full w-full relative z-0"></div>
-      <!-- Bottom-Left Author Credit Label -->
-      <footer class="relative z-30 bg-white border-t border-gray-200 py-2 px-4 text-center shrink-0">
-      <p class="text-xs text-gray-500 pointer-events-auto">
+<!-- Middle Area: Map takes all remaining vertical space -->
+  <main class="flex-1 relative z-0">
+    <div id="map" class="absolute inset-0 w-full h-full"></div>
+  </main>
+<!-- Bottom-Left Author Credit Label -->
+  <footer class="shrink-0 bg-white border-t border-gray-200 py-2 px-4 text-center relative z-30">
+    <p class="text-xs text-gray-500 pointer-events-auto">
         Created by chess enthusiast <span class="font-medium text-gray-700">Charles Chen</span> |♙| 
         <a href="mailto:chfchen08@gmail.com?subject=ChessMeet Inquiry / Feedback" 
            class="text-red-600 hover:text-red-700 font-semibold underline transition-colors cursor-pointer relative z-40">
           Contact ChessMeet for Inqury or Comment
         </a>
-      </p>
-      </footer>
-    </div>
-  </main>
-
+    </p>
+  </footer>
 <!-- Submission Modal -->
 <div id="submitModal" class="fixed inset-0 bg-black/60 hidden z-[9999] flex justify-center items-center p-4">
   <div class="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 max-h-[90vh] overflow-y-auto relative my-auto">
