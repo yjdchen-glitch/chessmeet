@@ -101,11 +101,11 @@
       <div class="flex gap-2">
         <div class="flex-1">
           <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">City*</label>
-          <input type="text" id="city" required placeholder value="e.g. New York" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <input type="text" id="city" required placeholder="e.g. New York" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
         </div>
         <div class="w-24">
           <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">State*</label>
-          <input type="text" id="state" required placeholder value="e.g. NY" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <input type="text" id="state" required placeholder="e.g. NY" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
         </div>
       </div>
       <!-- Coordinates (Optional) -->
@@ -208,6 +208,7 @@ async function fetchSpots() {
           <p><strong>Popular Times:</strong> ${spot.peak_playing_times || 'Anytime'}</p>
           ${spot.description ? `<p class="italic text-gray-500 mt-1 font-sans">"${spot.description}"</p>` : ''}
         </div>
+        <br>
         <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}" target="_blank" class="class="inline-block mt-3 w-full text-center text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold px-3 py-1.5 rounded-lg border border-gray-300 shadow-sm transition-colors no-underline">Get Directions</a>
       </div>
     `;
