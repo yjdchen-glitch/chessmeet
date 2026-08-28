@@ -158,8 +158,8 @@
     const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4a3l2Y3Joc2pjZHZkb3pzcG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4NjE4NjEsImV4cCI6MjEwMzQzNzg2MX0._PfuxJkCzNAFw4BtJe7RPAPX7jyWfXXqaFb28l-9vG0';
     
     // Assign to 'supabase' so all your fetch and insert functions can use `supabase.from(...)`
-    // const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const supabase = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    // const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     
     // 2. Initialize Map (Default centered on Houston/Katy area)
     const map = L.map('map').setView([29.7604, -95.3698], 11);
