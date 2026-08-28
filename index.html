@@ -141,7 +141,7 @@
         <input type="text" id="peak_playing_times" placeholder="e.g. Park Time 8AM - 9PM" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
       </div>
       <div>
-        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Description / Notes</label>
+        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Description / Notes (Optional)</label>
         <textarea id="description" rows="2" placeholder="e.g. Inside park near 42nd Street. Table locations may shift from time to time due to park events." class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
       </div>
       
@@ -208,7 +208,7 @@ async function fetchSpots() {
           <p><strong>Popular Times:</strong> ${spot.peak_playing_times || 'Anytime'}</p>
           ${spot.description ? `<p class="italic text-gray-500 mt-1 font-sans">"${spot.description}"</p>` : ''}
         </div>
-        <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}" target="_blank" class="inline-block mt-3 text-xs bg-indigo-600 text-white px-2.5 py-1 rounded">Get Directions</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}" target="_blank" class="class="inline-block mt-3 w-full text-center text-xs bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold px-3 py-1.5 rounded-lg border border-gray-300 shadow-sm transition-colors no-underline">Get Directions</a>
       </div>
     `;
 
