@@ -76,10 +76,11 @@
            class="text-green-600 hover:text-red-700 font-semibold no-underline hover:underline transition-colors cursor-pointer relative z-40">
           Contact ChessMeet for Inqury or Comment ♟️
         </a>
-    </p>
-    <p class="font-medium text-gray-300">© 2026 ChessMeet. All rights reserved.</p>
-    <p class="leading-relaxed text-gray-500 max-w-xl mx-auto">
-      <strong>Disclaimer:</strong> Information listed on ChessMeet is crowd-sourced and venue conditions may vary on-site. ChessMeet is not responsible for errors or inaccuracies. Please verify details independently.
+      <button type="button" 
+            onclick="alert('Disclaimer:\n Information listed on ChessMeet is crowd-sourced and venue conditions may vary on-site. ChessMeet is not responsible for errors or inaccuracies. Please verify details independently.\n\n© 2026 ChessMeet. All rights reserved.')" 
+            class="text-gray-500 hover:text-gray-800 underline ml-1 font-medium">
+      Disclaimer
+    </button>
     </p>
   </footer>
 <!-- Submission Modal -->
@@ -208,7 +209,7 @@ async function fetchSpots() {
         <p class="text-xs text-gray-600 mb-2">${spot.address || ''}, ${spot.city}</p>
         <div class="text-xs space-y-1">
           <p><strong>Type:</strong> <span class="capitalize">${spot.environment}</span></p>
-          <p><strong>Tables:</strong> ~ ${spot.has_permanent_tables ? 'Chess Sets Available On-Site' : 'Bring Your Own Chess Set'} (${spot.total_tables} Tables/Boards)</p>
+          <p><strong>Tables (Approx.):</strong> ${spot.has_permanent_tables ? 'Chess Sets Available On-Site' : 'Bring Your Own Chess Set'} (${spot.total_tables} Tables/Boards)</p>
           <p><strong>Popular Times:</strong> ${spot.peak_playing_times || 'Anytime'}</p>
           ${spot.description ? `<p class="italic text-gray-500 mt-1 font-sans">"${spot.description}"</p>` : ''}
         </div>
