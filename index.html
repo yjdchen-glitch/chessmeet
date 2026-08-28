@@ -114,8 +114,8 @@
           Coordinates (Latitude, Longitude) <span class="text-gray-400 font-normal lowercase">(if known, optional)</span>
         </label>
         <div class="flex gap-2">
-          <input type="text" step="any" id="lat" placeholder="Latitude (e.g. 40.7536)" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-          <input type="text" step="any" id="lng" placeholder="Longitude (e.g. -73.9832)" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <input type="text" step="any" id="lat" placeholder="e.g. 40.7536" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <input type="text" step="any" id="lng" placeholder="e.g. -73.9832" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
         </div>
       </div>
       <div class="flex gap-2">
@@ -129,7 +129,7 @@
         </div>
         <div class="flex-1">
           <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Tables Available*(approx)</label>
-          <input type="number" id="total_tables" value="10" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <input type="number" id="total_tables" value="3" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
         </div>
       </div>
       <div class="flex items-center gap-2 py-1">
@@ -155,8 +155,8 @@
   <script>
     // 1. Initialize Supabase
     const SUPABASE_URL = 'https://txkyvcrhsjcdvdozspob.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4a3l2Y3Joc2pjZHZkb3pzcG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4NjE4NjEsImV4cCI6MjEwMzQzNzg2MX0._PfuxJkCzNAFw4BtJe7RPAPX7jyWfXXqaFb28l-9vG0';
-    
+    //const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4a3l2Y3Joc2pjZHZkb3pzcG9iIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc4NjE4NjEsImV4cCI6MjEwMzQzNzg2MX0._PfuxJkCzNAFw4BtJe7RPAPX7jyWfXXqaFb28l-9vG0';
+    const SUPABASE_KEY = 'sb_publishable_ugYWdWbmItHrTHtSBiCBlw_cv5FMGgn'
     // Assign to 'supabase' so all your fetch and insert functions can use `supabase.from(...)`
     const supabaseClient = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
     // const supabaseClient = window['supabase'].createClient(SUPABASE_URL, SUPABASE_KEY);
