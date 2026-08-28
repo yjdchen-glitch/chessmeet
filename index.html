@@ -171,39 +171,50 @@
     let markersGroup = L.layerGroup().addTo(map);
 
     // 3. Fetch and Render Approved Spots
-    async function fetchSpots() {
-      const env = document.getElementById('envFilter').value;
-      
-      let query = supabaseClient.from('chess_spots').select('*').eq('status', 'approved');
-      if (env !== 'all') {
-        query = query.eq('environment', env);
-      }
+    // 3. Fetch and Render Approved Spots
+async function fetchSpots() {
+  const env = document.getElementById('envFilter').value;
+  
+  let query = supabaseClient.from('chess_spots').select('*').eq('status', 'approved');
+  if (env !== 'all') {
+    query = query.eq('environment', env);
+  }
 
-      const { data, error } = await query;
-      if (error) {
-        console.error('Error fetching spots:', error);
-        return;
-      }
+  const { data, error } = await query;
+  if (error) {
+    console.error('Error fetching spots:', error);
+    return;
+  }
 
-      markersGroup.clearLayers();
+  markersGroup.clearLayers();
 
-      data.forEach(spot => {
-        const popupContent = `
-          <div class="p-1 max-w-xs">
-            <h3 class="font-bold text-base text-indigo-700">${spot.title}</h3>
-            <p class="text-xs text-gray-600 mb-2">${spot.address}, ${spot.city}</p>
-            <div class="text-xs space-y-1">
-              <p><strong>Type:</strong> <span class="capitalize">${spot.environment}</span></p>
-              <p><strong>Tables:</strong> ${spot.has_permanent_tables ? 'Permanent Tables Built-in' : 'Bring Your Own Board (BYOB)'} (${spot.total_tables} available)</p>
-              <p><strong>Popular Times:</strong> ${spot.peak_playing_times || 'Anytime'}</p>
-              ${spot.description ? `<p class="italic text-gray-500 mt-1 font-sans">"${spot.description}"</p>` : ''}
-            </div>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=${spot.latitude},${spot.longitude}" target="_blank" class="inline-block mt-3 text-xs bg-indigo-600 text-white px-2.5 py-1 rounded">Get Directions</a>
-          </div>
-        `;
-        L.marker([spot.latitude, spot.longitude]).addTo(markersGroup).bindPopup(popupContent);
-      });
+  data.forEach(spot => {
+    // ⚠️ Check if both latitude and longitude are valid numbers before adding marker
+    const lat = parseFloat(spot.latitude);
+    const lng = parseFloat(spot.longitude);
+
+    if (isNaN(lat) || isNaN(lng)) {
+      console.warn(`Skipping spot ID ${spot.id} ("${spot.title}") due to missing coordinates.`);
+      return;
     }
+
+    const popupContent = `
+      <div class="p-1 max-w-xs">
+        <h3 class="font-bold text-base text-indigo-700">${spot.title}</h3>
+        <p class="text-xs text-gray-600 mb-2">${spot.address || ''}, ${spot.city}</p>
+        <div class="text-xs space-y-1">
+          <p><strong>Type:</strong> <span class="capitalize">${spot.environment}</span></p>
+          <p><strong>Tables:</strong> ${spot.has_permanent_tables ? 'Permanent Tables Built-in' : 'Bring Your Own Board (BYOB)'} (${spot.total_tables} available)</p>
+          <p><strong>Popular Times:</strong> ${spot.peak_playing_times || 'Anytime'}</p>
+          ${spot.description ? `<p class="italic text-gray-500 mt-1 font-sans">"${spot.description}"</p>` : ''}
+        </div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}" target="_blank" class="inline-block mt-3 text-xs bg-indigo-600 text-white px-2.5 py-1 rounded">Get Directions</a>
+      </div>
+    `;
+
+    L.marker([lat, lng]).addTo(markersGroup).bindPopup(popupContent);
+  });
+}
 
     // 4. Geolocation ("Near Me")
     function locateUser() {
