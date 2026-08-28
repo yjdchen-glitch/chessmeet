@@ -72,36 +72,39 @@
     
     <form id="spotForm" onsubmit="handleFormSubmit(event)" class="space-y-3">
       <div>
-        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Spot Name</label>
-        <input type="text" id="title" required placeholder="e.g. Discovery Green Tables" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Place Name*</label>
+        <input type="text" id="title" required placeholder="e.g. Bryant Park" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
       </div>
+      <!-- Street Address (Optional) -->
       <div>
-        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Street Address</label>
-        <input type="text" id="address" required placeholder="1500 McKinney St" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">
+          Street Address <span class="text-gray-400 font-normal lowercase">(if known, optional, or nearby street address)</span>
+        </label>
+        <input type="text" id="address" placeholder="e.g. 42nd Street and 6th Avenue" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
       </div>
       <div class="flex gap-2">
         <div class="flex-1">
-          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">City</label>
-          <input type="text" id="city" required value="Houston" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">City*</label>
+          <input type="text" id="city" required value="New York" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
         </div>
         <div class="w-24">
-          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">State</label>
-          <input type="text" id="state" required value="TX" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">State*</label>
+          <input type="text" id="state" required value="NY" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+        </div>
+      </div>
+      <!-- Coordinates (Optional) -->
+      <div>
+        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">
+          Coordinates (Latitude, Longitude) <span class="text-gray-400 font-normal lowercase">(if known, optional)</span>
+        </label>
+        <div class="flex gap-2">
+          <input type="number" step="any" id="lat" placeholder="Latitude (e.g. 40.7536)" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <input type="number" step="any" id="lng" placeholder="Longitude (e.g. -73.9832)" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
         </div>
       </div>
       <div class="flex gap-2">
         <div class="flex-1">
-          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Latitude</label>
-          <input type="number" step="any" id="lat" required placeholder="29.7523" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-        </div>
-        <div class="flex-1">
-          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Longitude</label>
-          <input type="number" step="any" id="lng" required placeholder="-95.3584" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-        </div>
-      </div>
-      <div class="flex gap-2">
-        <div class="flex-1">
-          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Environment</label>
+          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Environment*</label>
           <select id="environment" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
             <option value="outdoor">Outdoor</option>
             <option value="indoor">Indoor</option>
@@ -109,21 +112,21 @@
           </select>
         </div>
         <div class="flex-1">
-          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Tables Available</label>
-          <input type="number" id="total_tables" value="2" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Tables Available* (approximate)</label>
+          <input type="number" id="total_tables" value="10" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
         </div>
       </div>
       <div class="flex items-center gap-2 py-1">
         <input type="checkbox" id="has_permanent_tables" class="w-4 h-4 text-indigo-600 rounded">
-        <label for="has_permanent_tables" class="text-sm font-medium text-gray-700">Has built-in chess boards/tables</label>
+        <label for="has_permanent_tables" class="text-sm font-medium text-gray-700">Complete chess set provided on-site</label>
       </div>
       <div>
-        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Typical Playing Times</label>
-        <input type="text" id="peak_playing_times" placeholder="e.g. Saturdays 2 PM - 6 PM" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+        <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Typical Playing Times (Optional)</label>
+        <input type="text" id="peak_playing_times" placeholder="e.g. Park Time 8AM - 9PM" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
       </div>
       <div>
         <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Description / Notes</label>
-        <textarea id="description" rows="2" placeholder="Bring your own pieces, shaded area near park entrance..." class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
+        <textarea id="description" rows="2" placeholder="e.g. Inside park near 42nd Street. Table locations may shift from time to time due to park events." class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none"></textarea>
       </div>
       
       <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2.5 rounded-lg hover:bg-indigo-700 transition shadow-md mt-2">
