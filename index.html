@@ -101,11 +101,11 @@
       <div class="flex gap-2">
         <div class="flex-1">
           <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">City*</label>
-          <input type="text" id="city" required value="New York" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <input type="text" id="city" required placeholder value="e.g. New York" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
         </div>
         <div class="w-24">
           <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">State*</label>
-          <input type="text" id="state" required value="NY" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
+          <input type="text" id="state" required placeholder value="e.g. NY" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
         </div>
       </div>
       <!-- Coordinates (Optional) -->
@@ -122,7 +122,7 @@
         <div class="flex-1">
           <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Environment*</label>
           <select id="environment" class="w-full border rounded p-2 text-sm focus:ring-2 focus:ring-indigo-500 outline-none">
-            <option value="outdoor">Outdoor</option>
+            <option value="outdoor" selected>Outdoor</option>
             <option value="indoor">Indoor</option>
             <option value="both">Both</option>
           </select>
