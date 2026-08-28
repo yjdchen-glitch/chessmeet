@@ -78,7 +78,7 @@
       <button type="button" 
             onclick="alert('This website is to help players find free, walk-in places to play chess in person with no membership or registration.\n\nInformation listed on ChessMeet is crowd-sourced and venue conditions may vary on-site. ChessMeet is not responsible for errors or inaccuracies. Please verify details independently.\n\n© 2026 ChessMeet. All rights reserved.')" 
             class="text-gray-500 hover:text-red-800 no-underline ml-1 font-medium">
-       |♙| Disclaimer ♟️| 👁️ Visitors: <span id="visitorCount" class="font-semibold text-gray-700">...</span>
+       |♙| Disclaimer ♟️
     </button>
     </p>
     
@@ -282,33 +282,7 @@ async function fetchSpots() {
         document.getElementById('spotForm').reset();
         toggleModal(false);
       }
-    }
-    //
-    // Fetch and display total visitor count
-  async function updateVisitorCount() {
-    try {
-      // Replace 'chessmeet-app-2026' with any unique namespace/key for your site
-      const response = await fetch('https://api.countapi.xyz/hit/chessmeet-app-2026/visits');
-      const data = await response.json();
-      
-      // Update the counter element in the footer
-      const countElement = document.getElementById('visitorCount');
-      if (countElement) {
-        countElement.textContent = data.value.toLocaleString();
-      }
-    } catch (error) {
-      console.error('Error fetching visitor count:', error);
-      // Fallback display in case of network issue
-      const countElement = document.getElementById('visitorCount');
-      if (countElement) {
-        countElement.textContent = '1,000+';
-      }
-    }
-  }
-
-  // Call function on page load
-  document.addEventListener('DOMContentLoaded', updateVisitorCount);
-    //
+    }   
     // Initial Load
     fetchSpots();
   </script>
